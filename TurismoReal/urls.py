@@ -19,6 +19,6 @@ from apps.web.views import Home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('web/',include(('apps.web.urls','web'))),
-    path('home/',Home, name = 'index')
+    path('apps/',include(('apps.web.urls'))),
+    path('',Home, name = 'index')
 ]

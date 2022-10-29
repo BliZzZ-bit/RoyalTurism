@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import crearDepartamento, Home
+from . import views 
 
 urlpatterns = [
-    path('',Home, name = 'index'),
-    path('crear_departamento/',crearDepartamento, name='crear_departamento')
+    path('', views.Home, name = 'index'),
+    path('crear_departamento/',views.crearDepartamento, name='crear_departamento')
 ]
