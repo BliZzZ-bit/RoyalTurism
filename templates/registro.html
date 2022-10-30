@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+{% block content %}
+
+<form action="" method="POST">
+    {% csrf_token %}  
+    {{usuario_form.as_p}}
+    <button class="btn" type="submit">Registrarse</button>
+</form>
+
+Si ya tiene una cuenta haga click en <a href="#">Iniciar Sesion</a>
+
+{% endblock %}

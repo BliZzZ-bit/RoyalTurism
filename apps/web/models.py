@@ -31,7 +31,7 @@ class Usuario(models.Model):
     email = models.EmailField(max_length = 254,blank = False, null = False)
     num_contacto = models.IntegerField()
     tipo_de_usuario = models.CharField(max_length = 200,blank = False, null = False)
-    password = forms.CharField(max_length=32, widget=forms.PasswordInput)
+    password = forms.CharField(max_length=100)
 
     def __str__(self):
         return self.rut_usuario
