@@ -11,7 +11,6 @@ def Home(request):
 
 def crearDepartamento(request):
     if request.method == 'POST':
-        print(request.POST)
         departamento_form = DepartamentoForm(request.POST)
         if departamento_form.is_valid():
             departamento_form.save()

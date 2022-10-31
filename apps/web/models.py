@@ -7,7 +7,7 @@ from django.db import models
 class Departamento(models.Model):
     id = models.AutoField(primary_key = True)
     nombre = models.CharField(max_length = 200,blank = False, null = False)
-    numero = models.IntegerField()
+    numero = models.CharField(max_length = 10,blank = False, null = False)
     direccion = models.CharField(max_length = 200,blank = False, null = False)
     num_habitaciones = models.IntegerField()
     num_baños = models.IntegerField()
