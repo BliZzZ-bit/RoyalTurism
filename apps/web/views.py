@@ -21,7 +21,7 @@ def crearDepartamento(request):
     return render(request, 'web/crear_departamento.html',{'departamento_form':departamento_form})
 
 def listar_dep(request):
-    deps = Departamento.objects.all()
+    deps = Departamento.objects.filter(estado = True)
     return render(request, 'web/listardeps.html', {'deps':deps})
 
 def editar_dep(request,id):
@@ -41,7 +41,13 @@ def editar_dep(request,id):
 
     return render(request,'web/crear_departamento.html',{'departamento_form':departamento_form,'error':error})
 
-
+def eliminar_dep(request, id):
+    deps = Departamento.objects.get(id = id)
+    if request.method == 'POST':
+        deps.estado = False
+        deps.save()
+        return redirect('listar_departamento')
+    return render(request,'web/eliminar_departamento.html',{'deps':deps})
 
 '''
 def registrar(request):

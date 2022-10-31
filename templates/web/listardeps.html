@@ -34,6 +34,7 @@ Listar departamentos
                         <td>{{dep.valor}}</td>
                         <td>
                             <a href="{% url 'editar_departamento' dep.id %}">Edit</a>
+                            <a href="{% url 'eliminar_departamento' dep.id %}">Del</a>
                         </td>
                     </tr>
                 {% endfor %}

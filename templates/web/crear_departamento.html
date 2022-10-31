@@ -1,5 +1,8 @@
 {% extends "base_generic.html" %}
-{% load static %}
+{% block titulo %}
+    Crear departamentos
+{% endblock titulo %}
+
 {% block content %}
 
 <body>
@@ -9,8 +12,8 @@
             <h2>{{error}}</h2>
         {% else %}
             {{ departamento_form.as_p }}
+            <button type="submit">crear</button>
         {% endif %}
-        <button type="submit">crear</button>
     </form>
 
 {% endblock %}

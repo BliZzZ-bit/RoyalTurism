@@ -1,7 +1,6 @@
-from pyexpat import model
-from tabnanny import verbose
+
+from email.policy import default
 from django.db import models
-from django import forms
 
 # Create your models here.
 
@@ -14,11 +13,14 @@ class Departamento(models.Model):
     num_baños = models.IntegerField()
     descripcion = models.TextField(blank = False, null = False)
     valor = models.IntegerField()
+    estado = models.BooleanField('Estado', default = True)
+    fecha_creacion = models.DateField('Fecha de creacion', auto_now = True, auto_now_add = False)
+
     
     def __str__(self):
         return self.nombre
 
     class Meta:
-        ordering = ['nombre']
+        ordering = ['id']
         verbose_name = 'Departamento'
         verbose_name_plural = 'Departamentos'

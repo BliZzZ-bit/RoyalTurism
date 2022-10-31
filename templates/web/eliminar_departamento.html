@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block titulo %}
+    Eliminar departamentos
+{% endblock titulo %}
+
+{% block content %}
+
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <h2>¿Desea eliminar el departamento "{{ deps.nombre }}" N°: {{ deps.numero }}?</h2>
+            <button type="submit">Eliminar</button>
+            <a href="{% url 'listar_departamento' %}">cancelar</a>
+    </form>
+
+{% endblock %}
