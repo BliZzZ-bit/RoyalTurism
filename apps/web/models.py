@@ -20,5 +20,5 @@ class Departamento(models.Model):
 
     class Meta:
         ordering = ['nombre']
-        verbose_name = 'Departamentos'
+        verbose_name = 'Departamento'
         verbose_name_plural = 'Departamentos'

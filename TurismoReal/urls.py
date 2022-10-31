@@ -18,8 +18,12 @@ from django.urls import path,include
 from django.views.generic.base import TemplateView
 from apps.web import views
 
+from django.contrib.auth.decorators import login_required
+from apps.web.views import Home
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('apps/',include(('apps.web.urls'))),
+    #path('',login_required(Home.as_view()), name = 'index')
     path('', TemplateView.as_view(template_name='index.html'), name='index'),
 ]

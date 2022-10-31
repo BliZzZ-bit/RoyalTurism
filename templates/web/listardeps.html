@@ -1,0 +1,47 @@
+{% extends 'base_generic.html' %}
+
+{% block titulo %}
+Listar departamentos
+{% endblock titulo %}
+
+{% block content %}
+
+    {% if deps %}
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Numero</th>
+                    <th>Direccion</th>
+                    <th>N° Hab</th>
+                    <th>N° Baños</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dep in deps %}
+                    <tr>
+                        <td>{{dep.id}}</td>
+                        <td>{{dep.nombre}}</td>
+                        <td>{{dep.numero}}</td>
+                        <td>{{dep.direccion}}</td>
+                        <td>{{dep.num_habitaciones}}</td>
+                        <td>{{dep.num_baños}}</td>
+                        <td>{{dep.descripcion}}</td>
+                        <td>{{dep.valor}}</td>
+                        <td>
+                            <a href="{% url 'editar_departamento' dep.id %}">Edit</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h1>No se han agregado departamentos aun</h1>
+    {% endif %}
+
+
+{% endblock %}

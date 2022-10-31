@@ -1,13 +1,13 @@
+{% load static %}
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
   <head>
   
-    <title>Home</title>
+    <title>{% block titulo %}Home{% endblock titulo %}</title>
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
-    {% load static %}
     <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
     <!-- Stylesheets-->
     <link rel="stylesheet" type="text/css" href="{% static '//fonts.googleapis.com/css?family=Montserrat:400,500,600,700%7CPoppins:400%7CTeko:300,400' %}" >
@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
+
   </head>
   
   <body>
@@ -55,7 +56,7 @@
                       </ul><a class="button button-md button-default-outline-2 button-ujarak" href="#">cerrar sesion</a>
                     {% else %}
                   </ul><a class="button button-md button-default-outline-2 button-ujarak" href="#">Entrar</a>
-                      </ul><a class="button button-md button-default-outline-2 button-ujarak" href="">Registrarse</a>
+                      </ul><a class="button button-md button-default-outline-2 button-ujarak" href="#">Registrarse</a>
                     {% endif %}
                 </div>
               </div>
@@ -75,7 +76,7 @@
                     </li>
                     <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'crear_departamento' %}">crear departamento</a>
                     </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="typography.html">Typography</a>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'listar_departamento' %}">Listar</a>
                     </li>
                     <li class="rd-nav-item"><a class="rd-nav-link" href="contact-us.html">Contact Us</a>
                     </li>
@@ -88,7 +89,7 @@
       </header>
 
       {% block content %}
-      {% endblock %}
+      {% endblock%}
 
       <footer class="section footer-corporate context-dark">
         <div class="footer-corporate-inset">

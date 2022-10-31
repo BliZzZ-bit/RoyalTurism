@@ -1,12 +1,8 @@
-import re
-from urllib import request
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, logout
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.core.exceptions import ObjectDoesNotExist
 from .forms import DepartamentoForm
-from django.views.generic import CreateView
-from django.contrib.auth.models import User
-from django.urls import reverse_lazy
+from .models import Departamento
+
 # Create your views here.
 
 
@@ -15,11 +11,41 @@ def Home(request):
 
 def crearDepartamento(request):
     if request.method == 'POST':
+        print(request.POST)
         departamento_form = DepartamentoForm(request.POST)
         if departamento_form.is_valid():
             departamento_form.save()
             return redirect('index')
     else:
         departamento_form = DepartamentoForm()
-        
     return render(request, 'web/crear_departamento.html',{'departamento_form':departamento_form})
+
+def listar_dep(request):
+    deps = Departamento.objects.all()
+    return render(request, 'web/listardeps.html', {'deps':deps})
+
+def editar_dep(request,id):
+    departamento_form = None
+    error = None
+    try:
+        deps = Departamento.objects.get(id = id)
+        if request.method == 'GET':
+            departamento_form = DepartamentoForm(instance = deps)
+        else:
+            departamento_form = DepartamentoForm(request.POST, instance = deps)
+            if departamento_form.is_valid():
+                departamento_form.save()
+                return redirect('index')
+    except ObjectDoesNotExist as e:
+        error = e
+
+    return render(request,'web/crear_departamento.html',{'departamento_form':departamento_form,'error':error})
+
+
+
+'''
+def registrar(request):
+    return render(request, 'registro.html', {
+            'form': UserCreationForm
+    })
+'''
