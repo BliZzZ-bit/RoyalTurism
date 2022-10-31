@@ -51,7 +51,12 @@
                         <div class="unit-body"><a class="link-phone" href="tel:#">+1 323-913-4688</a></div>
                       </div>
                     </li>
-                  </ul><a class="button button-md button-default-outline-2 button-ujarak" href="{% url 'registro' %}">Registrarse</a>
+                    {% if user.is_authenticated %}
+                      </ul><a class="button button-md button-default-outline-2 button-ujarak" href="#">cerrar sesion</a>
+                    {% else %}
+                  </ul><a class="button button-md button-default-outline-2 button-ujarak" href="#">Entrar</a>
+                      </ul><a class="button button-md button-default-outline-2 button-ujarak" href="">Registrarse</a>
+                    {% endif %}
                 </div>
               </div>
             </div>

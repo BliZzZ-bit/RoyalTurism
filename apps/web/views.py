@@ -1,7 +1,12 @@
+import re
+from urllib import request
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, logout, authenticate
-from .forms import DepartamentoForm, UsuarioForm
-
+from django.contrib.auth import login, logout
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from .forms import DepartamentoForm
+from django.views.generic import CreateView
+from django.contrib.auth.models import User
+from django.urls import reverse_lazy
 # Create your views here.
 
 
@@ -18,13 +23,3 @@ def crearDepartamento(request):
         departamento_form = DepartamentoForm()
         
     return render(request, 'web/crear_departamento.html',{'departamento_form':departamento_form})
-
-def CrearUsuario(request):
-    if request.method == "POST":
-        usuario_form = UsuarioForm(request.POST)
-        if usuario_form.is_valid():
-            usuario_form.save()
-            return redirect('index')
-    else:
-        usuario_form = UsuarioForm()
-    return render(request, 'registro.html',{'usuario_form':usuario_form})

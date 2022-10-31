@@ -1,0 +1,13 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+
+<form>
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>
+        Entrar
+    </button>
+</form>
+
+{% endblock %}
